@@ -6,6 +6,10 @@ const website = argv[0];
 const path = argv[1];
 
 const readFunc = (error, response, body) => {
+  if (error) return;
+
+  console.log("statusCode:", response && response.statusCode);
+
   fs.writeFile(path, body, (error) => {
     if (error) {
       console.log("Failed to write to file");
